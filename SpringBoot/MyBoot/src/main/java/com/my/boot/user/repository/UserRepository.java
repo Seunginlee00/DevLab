@@ -15,5 +15,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("SELECT u FROM User u LEFT JOIN FETCH u.roleList WHERE u.loginId = :loginId")
     User getWithRoles(@Param("loginId") String loginId);
 
-
+    @Query("SELECT u FROM User u LEFT JOIN FETCH u.roleList WHERE u.loginId = :loginId")
+    Optional<User> selectUserWithRoles(@Param("userId") String loginId);
 }

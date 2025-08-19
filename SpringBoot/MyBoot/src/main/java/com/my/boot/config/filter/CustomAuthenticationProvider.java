@@ -1,7 +1,5 @@
 package com.my.boot.config.filter;
 
-import com.project.my.config.service.CustomUserDetailsService;
-import com.project.my.user.dto.UsersDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -26,7 +24,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     //log.info("📌 복호화된 비밀번호: {}", rawPassword);
 
-    UsersDTO userDetails = (UsersDTO) userDetailsService.loadUserByUsername(userId);
+    MemberDTO userDetails = (MemberDTO) userDetailsService.loadUserByUsername(userId);
     String encoded = userDetails.getPassword();
     String salt = userDetails.getSalt();
 
@@ -46,4 +44,3 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
   }
 }
-

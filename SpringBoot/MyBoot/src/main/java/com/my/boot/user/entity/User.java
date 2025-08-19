@@ -1,7 +1,6 @@
 package com.my.boot.user.entity;
 
 import com.my.boot.common.entity.BaseEntity;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -96,7 +95,7 @@ public class User extends BaseEntity {
 
     @Builder.Default
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<UserRoleList> roleList = new ArrayList<>();
+    private List<UserRole> roleList = new ArrayList<>();
 
 
 }

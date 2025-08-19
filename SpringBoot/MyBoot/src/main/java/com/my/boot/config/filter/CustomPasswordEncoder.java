@@ -1,6 +1,6 @@
 package com.my.boot.config.filter;
 
-import com.project.my.common.util.PasswordUtil;
+import com.my.boot.common.util.PasswordUtil;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
