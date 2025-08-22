@@ -33,19 +33,18 @@ public class CustomUserDetailsService implements UserDetailsService {
         () ->  new UsernameNotFoundException("사용자 없음"));
 
 
-    List<String> roleNames = userRoleRepository.findRoleCsvByUserId(loginId)
-            .map(csv -> Arrays.stream(csv.split(","))
-                    .map(String::trim)
-                    .filter(s -> !s.isEmpty())
-                    .sorted(Comparator.comparingInt((String s) ->
-                            switch (s) {
-                              case "USER" -> 1;
-                              case "MANAGER" -> 2;
-                              case "ADMIN" -> 3;
-                              default -> 4;
-                            }).thenComparing(s -> s))
-                    .toList())
-            .orElseGet(List::of);
+        List<String> roleNames = userRoleRepository.findRoleCsvByUserId(loginId)
+                .stream()
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .sorted(Comparator.comparingInt((String s) ->
+                        switch (s) {
+                            case "USER" -> 1;
+                            case "MANAGER" -> 2;
+                            case "ADMIN" -> 3;
+                            default -> 4;
+                        }).thenComparing(s -> s))
+                .toList();
 
     // 해당 부분 변환 필요
     // dto > EncryptService > MockSafeDb 가져오는 작업이 필요 ~

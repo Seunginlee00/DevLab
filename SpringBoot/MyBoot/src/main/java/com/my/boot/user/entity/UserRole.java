@@ -28,13 +28,11 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_role_id")
     private Long id;
-    private Long userId; // AI
-    private String loginId; //
-    private String roleList; // 회원 리스트
 
-    // 외래키로 실제 연관관계를 관리
+    private String roleList;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_role", nullable = false, referencedColumnName = "user_id")
-    private User users;
+    @JoinColumn(name = "user_id", nullable = false) // User의 PK(user_id)와 매핑
+    private User user;
 
 }

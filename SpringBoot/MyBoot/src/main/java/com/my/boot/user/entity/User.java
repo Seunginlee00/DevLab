@@ -93,9 +93,8 @@ public class User extends BaseEntity {
 //    @OneToMany(mappedBy = "users")
 //    List<Board> boardList = new ArrayList<>();
 
+
     @Builder.Default
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserRole> roleList = new ArrayList<>();
-
-
 }
