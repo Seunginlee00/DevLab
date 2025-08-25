@@ -14,7 +14,7 @@ public record UsersRequest(
     int display
 ) {
 
-  public User toEntity( String encodePasswd) {
+  public User toEntity (String encodePasswd) {
     return User.builder()
         .loginId(loginId())
         .userNm(userNm())

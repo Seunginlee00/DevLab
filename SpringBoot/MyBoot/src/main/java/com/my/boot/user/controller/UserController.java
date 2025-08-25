@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "회원 API")
-@RequestMapping("/v1/user")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 @RestController
 @Slf4j

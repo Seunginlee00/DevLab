@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class UserService {
 
     private final PasswordEncoder passwordEncoder;
@@ -26,12 +26,11 @@ public class UserService {
 /*
 * 회원가입
 * */
-    @Transactional(readOnly = true)
-    public ResultDTO<Void> userSignUp(UsersRequest request)  {
+    @Transactional
+    public ResultDTO<Void> userSignUp(UsersRequest request) {
 
-      try{
-        if(userRepository.existsByLoginId(request.loginId())){
-          throw new ApiException(ExceptionData.EXISTS_USER);
+        if (userRepository.existsByLoginId(request.loginId())) {
+            throw new ApiException(ExceptionData.EXISTS_USER);
         }
 
         String salt = PasswordUtil.getSalt();
@@ -39,23 +38,12 @@ public class UserService {
 
         User user = request.toEntity(encrypted);
 
-
-        User saveUser = userRepository.save(user);
-
+        userRepository.save(user);
 
         return ResultDTO.<Void>builder()
-            .success(true)
-            .message("회원 가입 되었습니다.")
-            .build();
-      }catch (Exception ex) {
-        log.error("회원 가입 중 오류", ex);
-        return ResultDTO.<Void>builder()
-            .success(false)
-            .message("회원 가입 중 오류가 발생했습니다: " + ex.getMessage())
-            .build();
-      }
-
-
+                .success(true)
+                .message("회원 가입 되었습니다.")
+                .build();
     }
 
 

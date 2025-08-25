@@ -20,17 +20,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
 
-@Table(name = "user")
+@Table(name = "users")
 @Getter
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@SQLDelete(sql = "UPDATE user SET is_delete = true, modified_date = now()  WHERE users_id = ?")
+@SQLDelete(sql = "UPDATE users SET is_delete = true, modified_date = now()  WHERE users_id = ?")
 public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "users_id")
     private Long id; // 고유 번호
 
     @Column(name = "login_id", nullable = false, unique = true, length = 60)

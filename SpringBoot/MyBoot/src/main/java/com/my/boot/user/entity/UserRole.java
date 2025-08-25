@@ -32,7 +32,7 @@ public class UserRole {
     private String roleList;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false) // User의 PK(user_id)와 매핑
+    @JoinColumn(name = "users_id", nullable = false) // User의 PK(user_id)와 매핑
     private User user;
 
 }
