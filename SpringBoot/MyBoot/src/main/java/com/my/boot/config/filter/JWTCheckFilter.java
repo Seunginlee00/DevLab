@@ -34,6 +34,7 @@ public class JWTCheckFilter extends OncePerRequestFilter {
             "/api/pub-key",
             "/api/jwt-pub-key",
             "/api/public-key",
+            "/login",
             "/api/user/login",
             "/api/user/register",
             "/api/user/refresh",

@@ -90,6 +90,7 @@ public class CustomSecurityConfig {
                         "/check-access",
                         "/api/public-key",
                         "/api/pub-key",
+                        "/api/user/login",
                         "/api/jwt-pub-key",
                         "/api/user/refresh",
                         "/api/user/photo/**",
